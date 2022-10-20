@@ -3280,21 +3280,21 @@ export class ResizableColumn implements AfterViewInit, OnDestroy {
     bindDocumentEvents() {
         this.zone.runOutsideAngular(() => {
             this.documentMouseMoveListener = this.onDocumentMouseMove.bind(this);
-            document.addEventListener('mousemove', this.documentMouseMoveListener);
+            this.el.nativeElement.addEventListener('mousemove', this.documentMouseMoveListener);
 
             this.documentMouseUpListener = this.onDocumentMouseUp.bind(this);
-            document.addEventListener('mouseup', this.documentMouseUpListener);
+            this.el.nativeElement.addEventListener('mouseup', this.documentMouseUpListener);
         });
     }
 
     unbindDocumentEvents() {
         if (this.documentMouseMoveListener) {
-            document.removeEventListener('mousemove', this.documentMouseMoveListener);
+            this.el.nativeElement.removeEventListener('mousemove', this.documentMouseMoveListener);
             this.documentMouseMoveListener = null;
         }
 
         if (this.documentMouseUpListener) {
-            document.removeEventListener('mouseup', this.documentMouseUpListener);
+             this.el.nativeElement.removeEventListener('mouseup', this.documentMouseUpListener);
             this.documentMouseUpListener = null;
         }
     }
